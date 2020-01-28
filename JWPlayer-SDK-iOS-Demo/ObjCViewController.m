@@ -22,7 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    JWAdBreak *adBreak = [JWAdBreak adBreakWithTag:@"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator=" offset:@"pre"];
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];
+    NSString *currDate = [dateFormatter stringFromDate:[NSDate date]];
+    NSString *adTag = [NSString stringWithFormat:@"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%%3Ddevsite%%26sample_ct%%3Dlinear&correlator=%@", currDate];
+    JWAdBreak *adBreak = [JWAdBreak adBreakWithTag:adTag offset:@"pre"];
     JWConfig *config = [JWConfig configWithContentURL:@"http://content.bitsontherun.com/videos/3XnJSIm4-injeKYZS.mp4"];
     config.advertising = [JWAdConfig new];
     config.advertising.client = JWAdClientVast;
