@@ -32,3 +32,4 @@ DerivedData
 *.ipa
 *.xcuserstate
 /jwplayer-ios-sdk
+Pods
